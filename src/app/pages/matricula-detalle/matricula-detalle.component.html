@@ -1,0 +1,153 @@
+<div class="container mt-5">
+    <h2>Datos de Matricula</h2>
+    <hr>
+    <br>
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Datos Estudiante</h4>
+                </div>
+                <div class="card-body">
+                    <dl class="row">
+                        <dt class="col-sm-4">ID</dt>
+                        <dd class="col-sm-8">{{estudiante.id}}</dd>
+                        <dt class="col-sm-4">Documento</dt>
+                        <dd class="col-sm-8">{{estudiante.documento}}</dd>
+                        <dt class="col-sm-4">Numero</dt>
+                        <dd class="col-sm-8">{{estudiante.numero}}</dd>
+                        <dt class="col-sm-4">Nombres</dt>
+                        <dd class="col-sm-8">{{estudiante.nombre}}</dd>
+                        <dt class="col-sm-4">Apellidos</dt>
+                        <dd class="col-sm-8">{{estudiante.apellido}}</dd>
+                        <dt class="col-sm-4">Direccion</dt>
+                        <dd class="col-sm-8">{{estudiante.direccion}}</dd>
+                        <dt class="col-sm-4">Telefono</dt>
+                        <dd class="col-sm-8">{{estudiante.telefono}}</dd>
+                        <dt class="col-sm-4">Email</dt>
+                        <dd class="col-sm-8">{{estudiante.email}}</dd>
+                        <dt class="col-sm-4">Genero</dt>
+                        <dd class="col-sm-8">{{estudiante.genero}}</dd>
+                        <dt class="col-sm-4">Apoderado</dt>
+                        <dd class="col-sm-8">{{estudiante.id_apoderado}}</dd>
+                        <dt class="col-sm-4">Estado</dt>
+                        <dd class="col-sm-8">{{estudiante.estado}}</dd>
+                        <dt class="col-sm-4">Nacimiento</dt>
+                        <dd class="col-sm-8">{{estudiante.nacimiento | date:"dd-MM-yyyy"}}</dd>
+                        <dt class="col-sm-4">Registro</dt>
+                        <dd class="col-sm-8">{{estudiante.registro | date:"dd-MM-yyyy"}}</dd>
+                        <dt class="col-sm-4">Actualizacion</dt>
+                        <dd class="col-sm-8">{{estudiante.actualizacion | date:"dd-MM-yyyy"}}</dd>
+                    </dl>
+                </div>
+                <div class="card-footer"></div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Datos Apoderado</h4>
+                </div>
+                <div class="card-body">
+                    <dl class="row">
+                        <dt class="col-sm-4">ID</dt>
+                        <dd class="col-sm-8">{{apoderado.id}}</dd>
+                        <dt class="col-sm-4">Documento</dt>
+                        <dd class="col-sm-8">{{apoderado.documento}}</dd>
+                        <dt class="col-sm-4">Numero</dt>
+                        <dd class="col-sm-8">{{apoderado.numero}}</dd>
+                        <dt class="col-sm-4">Nombres</dt>
+                        <dd class="col-sm-8">{{apoderado.nombre}}</dd>
+                        <dt class="col-sm-4">Apellidos</dt>
+                        <dd class="col-sm-8">{{apoderado.apellido}}</dd>
+                        <dt class="col-sm-4">Direccion</dt>
+                        <dd class="col-sm-8">{{apoderado.direccion}}</dd>
+                        <dt class="col-sm-4">Telefono</dt>
+                        <dd class="col-sm-8">{{apoderado.telefono}}</dd>
+                        <dt class="col-sm-4">Email</dt>
+                        <dd class="col-sm-8">{{apoderado.email}}</dd>
+                        <dt class="col-sm-4">Relacion</dt>
+                        <dd class="col-sm-8">{{apoderado.relacion}}</dd>
+                        <dt class="col-sm-4">Contraseña</dt>
+                        <dd class="col-sm-8">{{apoderado.password}}</dd>
+                        <dt class="col-sm-4">Estado</dt>
+                        <dd class="col-sm-8">{{apoderado.estado}}</dd>
+                        <dt class="col-sm-4">Nacimiento</dt>
+                        <dd class="col-sm-8">{{apoderado.nacimiento | date:"dd-MM-yyyy"}}</dd>
+                        <dt class="col-sm-4">Registro</dt>
+                        <dd class="col-sm-8">{{apoderado.registro | date:"dd-MM-yyyy"}}</dd>
+                        <dt class="col-sm-4">Actualizacion</dt>
+                        <dd class="col-sm-8">{{apoderado.actualizacion| date:"dd-MM-yyyy"}}</dd>
+                    </dl>
+                </div>
+                <div class="card-footer"></div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Datos Matricula</h4>
+                </div>
+                <div class="card-body">
+                    <dl class="row">
+                        <dt class="col-sm-4">ID</dt>
+                        <dd class="col-sm-8">{{matricula.id}}</dd>
+                        <dt class="col-sm-4">Estudiante</dt>
+                        <dd class="col-sm-8">{{matricula.id_estudiante}}</dd>
+                        <dt class="col-sm-4">Periodo</dt>
+                        <dd class="col-sm-8">{{matricula.periodo}}</dd>
+                        <dt class="col-sm-4">Nivel</dt>
+                        <dd class="col-sm-8">{{matricula.nivel}}</dd>
+                        <dt class="col-sm-4">Grado</dt>
+                        <dd class="col-sm-8">{{matricula.grado}}</dd>
+                        <dt class="col-sm-4">Seccion</dt>
+                        <dd class="col-sm-8">{{matricula.seccion}}</dd>
+                        <dt class="col-sm-4">Descripcion</dt>
+                        <dd class="col-sm-8">{{matricula.descripcion}}</dd>
+                        <dt class="col-sm-4">Estado</dt>
+                        <dd class="col-sm-8">{{matricula.estado}}</dd>
+                        <dt class="col-sm-4">Registro</dt>
+                        <dd class="col-sm-8">{{matricula.registro | date:"dd-MM-yyyy"}}</dd>
+                    </dl>
+                </div>
+                <div class="card-footer"></div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <h2>Lista Matricula Detalle</h2>
+    <hr>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>ID Matricula</th>
+                <th>Descripcion</th>
+                <th>Monto</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (matriculaDetalle of listaMatriculaDetalle; track $index) {
+            <tr>
+                <td>{{matriculaDetalle.id}}</td>
+                <td>{{matriculaDetalle.id_matricula}}</td>
+                <td>{{matriculaDetalle.descripcion}}</td>
+                <td>{{matriculaDetalle.monto}}</td>
+                <td>
+                    @if (matriculaDetalle.estado=="PENDIENTE") {
+                        <span class="text-bg-danger p-1 rounded-3">{{matriculaDetalle.estado}}</span>
+                    }@else{
+                        <span class="text-bg-success p-2 rounded-3">{{matriculaDetalle.estado}}</span>
+                    }
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+    <br>
+    <hr>
+    <div class="">
+        <button class="btn btn-primary" routerLink="/matricula">Regresar</button>
+    </div>
+</div>

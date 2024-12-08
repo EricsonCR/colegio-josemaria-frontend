@@ -1,0 +1,180 @@
+<div class="container my-5 col-sm-10">
+    <h2>Registar Pago</h2>
+    <hr>
+    <br>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Datos de Matricula</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row mb-3">
+                        <div class="col-sm-6 form-floating">
+                            <input type="text" class="form-control" placeholder="" [(ngModel)]="txtDniMatricula">
+                            <label for="" class="ms-2">Numero dni ó matricula</label>
+                        </div>
+                        <div class="col-sm-6 d-grid">
+                            <div class="d-grid">
+                                <button class="btn btn-primary fw-semibold fs-5" (click)="buscarMatricula()">Buscar
+                                    Matricula</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-6 form-floating">
+                            <input type="text" class="form-control fw-bold" [(ngModel)]="estudiante.nombre"
+                                placeholder="" readonly>
+                            <label for="" class="ms-2">Nombre Estudiante</label>
+                        </div>
+                        <div class="col-sm-6 form-floating">
+                            <input type="text" class="form-control fw-bold" [(ngModel)]="estudiante.numero"
+                                placeholder="" readonly>
+                            <label for="" class="ms-2">Dni Estudiante</label>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-6 form-floating">
+                            <input type="text" class="form-control fw-bold" [(ngModel)]="apoderado.nombre"
+                                placeholder="" readonly>
+                            <label for="" class="ms-2">Nombre Apderado</label>
+                        </div>
+                        <div class="col-sm-6 form-floating">
+                            <input type="text" class="form-control fw-bold" [(ngModel)]="apoderado.numero"
+                                placeholder="" readonly>
+                            <label for="" class="ms-2">Dni Apoderado</label>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-5 form-floating">
+                            <input type="text" class="form-control fw-bold" [(ngModel)]="estudiante.id" placeholder=""
+                                readonly>
+                            <label for="" class="ms-2">Cod. Estudiante</label>
+                        </div>
+                        <div class="col-sm-4 form-floating">
+                            <input type="texst" class="form-control fw-bold" [(ngModel)]="matricula.id" placeholder=""
+                                readonly>
+                            <label for="" class="ms-2">Cod. Matricula</label>
+                        </div>
+                        <div class="col-sm-3 form-floating">
+                            <input type="text" class="form-control fw-bold" [(ngModel)]="matricula.periodo"
+                                placeholder="" readonly>
+                            <label for="" class="ms-2">Periodo</label>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-5 form-floating">
+                            <input type="text" class="form-control fw-bold" [(ngModel)]="matricula.nivel" placeholder=""
+                                readonly>
+                            <label for="" class="ms-2">Nivel</label>
+                        </div>
+                        <div class="col-sm-4 form-floating">
+                            <input type="text" class="form-control fw-bold" [(ngModel)]="matricula.grado" placeholder=""
+                                readonly>
+                            <label for="" class="ms-2">Grado</label>
+                        </div>
+                        <div class="col-sm-3 form-floating">
+                            <input type="text" class="form-control fw-bold" [(ngModel)]="matricula.seccion"
+                                placeholder="" readonly>
+                            <label for="" class="ms-2">Seccion</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Datos de Pago</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row mb-4">
+                        <div class="col-sm-6 form-floating">
+                            <select name="" id="" class="form-select fw-bold" [(ngModel)]="pago.metodo_pago">
+                                @for (metodoPago of ListaMetodosPago; track $index) {
+                                <option value="{{metodoPago.nombre}}">{{metodoPago.nombre}}</option>
+                                }
+                            </select>
+                            <label for="" class="ms-2">Metodo Pago</label>
+                        </div>
+                        <div class="col-sm-6 form-floating">
+                            <input type="text" class="form-control fw-bold" placeholder="" [(ngModel)]="pago.numero_op">
+                            <label for="" class="ms-2">Numero Operacion</label>
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <div class="">
+                            <input type="file" class="form-control form-control-lg" [(ngModel)]="pago.url_voucher">
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col-sm-6 form-floating">
+                            <input type="datetime" class="form-control fw-bold" placeholder=""
+                                value="{{FechaActual | date:'dd/MM/yyyy'}}">
+                            <label for="" class="ms-2">Fecha</label>
+                        </div>
+                        <div class="col-sm-6 form-floating">
+                            <input type="number" class="form-control fw-bold" placeholder="" [(ngModel)]="pago.monto"
+                                readonly>
+                            <label for="" class="ms-2">Monto Total</label>
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col-sm-6 d-grid">
+                            <button class="btn btn-secondary fs-5" (click)="limpiarDatos()">Limpiar</button>
+                        </div>
+                        <div class="col-sm-6 d-grid">
+                            <button class="btn btn-danger fs-5" disabled>Cancelar</button>
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col-sm d-grid">
+                            <button type="submit" class="btn btn-success fw-semibold fs-5" (click)="registrarPago()"
+                                [disabled]="estadoButtonPagar">{{textButtonPago}} Pagar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container col-sm-10">
+    <div class="card">
+        <div class="card-header">
+            <h4>Datos Matricuala Detalle</h4>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>ID</th>
+                        <th>Matricula</th>
+                        <th>Descripcion</th>
+                        <th>Monto</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (matriculaDetalle of ListaMatriculaDetalle; track $index) {
+                    <tr>
+                        <td><input type="checkbox" class="form-check-input" [(ngModel)]="listaCheckbox[$index].selected"
+                                (change)="obtenerEstado(matriculaDetalle, listaCheckbox[$index].selected)"></td>
+                        <td>{{matriculaDetalle.id}}</td>
+                        <td>{{matriculaDetalle.id_matricula}}</td>
+                        <td>{{matriculaDetalle.descripcion}}</td>
+                        <td>{{matriculaDetalle.monto}}</td>
+                        <td>
+                            @if (matriculaDetalle.estado=="PENDIENTE") {
+                            <span class="text-bg-danger p-1 rounded-3">{{matriculaDetalle.estado}}</span>
+                            }@else{
+                            <span class="text-bg-success p-2 rounded-3">{{matriculaDetalle.estado}}</span>
+                            }
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

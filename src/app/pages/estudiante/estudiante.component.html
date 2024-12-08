@@ -1,0 +1,154 @@
+<div class="container mt-5">
+    <h2>Lista Estudiantes</h2>
+    <hr>
+    <div class="d-flex justify-content-between">
+        <div class="d-flex">
+            <button class="btn btn-primary" data-bs-target="#modalCrear" data-bs-toggle="modal"
+                (click)="clearEstudiante()">Agregar
+                Estudiante</button>
+        </div>
+        <div class="d-flex">
+            <input type="text" class="form-control me-2">
+            <button class="btn btn-primary">Buscar</button>
+        </div>
+    </div>
+    <br>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Documento</th>
+                <th>Nombre</th>
+                <th>Telefono</th>
+                <th>Email</th>
+                <th>Nacimiento</th>
+                <th>Accion</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (estudiante of ListaEstudiantes; track $index) {
+            <tr>
+                <td>{{estudiante.id}}</td>
+                <td>{{estudiante.documento}} : {{estudiante.numero}}</td>
+                <td>{{estudiante.nombre}} {{estudiante.apellido}}</td>
+                <td>{{estudiante.telefono}}</td>
+                <td>{{estudiante.email}}</td>
+                <td>{{estudiante.nacimiento | date:'dd-MM-yyyy'}}</td>
+                <td>
+                    <a href="" class="btn btn-secondary">Editar</a>
+                    <a href="" class="btn btn-secondary mx-2">Detalle</a>
+                    <a href="" class="btn btn-secondary">Eliminar</a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="modal fade" id="modalCrear">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Crear Estudiante</h2>
+                <button class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="formEstudiante">
+                    <div class="row mb-3">
+                        <div class="col-sm-4">
+                            <label for="" class="form-label">Documento</label>
+                            <select name="" id="" class="form-select" formControlName="documento">
+                                @for (documento of ListaDocumentos; track $index) {
+                                <option value="{{documento.nombre}}">{{documento.nombre}}</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="col-sm-4">
+                            <label for="" class="form-label">Numero</label>
+                            <input type="text" class="form-control" formControlName="numero">
+                        </div>
+                        <div class="col-sm-4">
+                            <label for="" class="form-label">Genero</label>
+                            <select name="" id="" class="form-select" formControlName="genero">
+                                @for (genero of ListaGeneros; track $index) {
+                                <option value="{{genero.nombre}}">{{genero.nombre}}</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-6">
+                            <label for="" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" formControlName="nombre">
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="" class="form-label">Apellido</label>
+                            <input type="text" class="form-control" formControlName="apellido">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-6">
+                            <label for="" class="form-label">Direccion</label>
+                            <input type="text" class="form-control" formControlName="direccion">
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="" class="form-label">Email</label>
+                            <input type="text" class="form-control" formControlName="email">
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <label for="" class="form-label">Telefono</label>
+                            <input type="text" class="form-control" formControlName="telefono">
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="" class="form-label">Nacimiento</label>
+                            <input type="date" class="form-control" formControlName="nacimiento">
+                        </div>
+                    </div>
+                </form>
+                <br>
+                <h4>Datos Apoderado</h4>
+                <hr>
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" placeholder="nro. documento"
+                            [(ngModel)]="txtNumeroApoderado">
+                    </div>
+                    <div class="d-grid col-6">
+                        <button class="btn btn-primary" (click)="buscarApoderado()">Buscar Apoderado</button>
+                    </div>
+                    <input type="text" hidden [(ngModel)]="apoderado.id">
+                </div>
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <label for="" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" disabled [(ngModel)]="apoderado.nombre">
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="" class="form-label">Apellido</label>
+                        <input type="text" class="form-control" disabled [(ngModel)]="apoderado.apellido">
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-sm-4">
+                        <label for="" class="form-label">Documento</label>
+                        <input type="text" class="form-control" disabled [(ngModel)]="apoderado.documento">
+                    </div>
+                    <div class="col-sm-4">
+                        <label for="" class="form-label">Numero</label>
+                        <input type="text" class="form-control" disabled [(ngModel)]="apoderado.numero">
+                    </div>
+                    <div class="col-sm-4">
+                        <label for="" class="form-label">Relacion</label>
+                        <input type="text" class="form-control" disabled [(ngModel)]="apoderado.relacion">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="modalCrearClose" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                <button class="btn btn-success" (click)="crearEstudiante()">Crear</button>
+            </div>
+        </div>
+    </div>
+</div>

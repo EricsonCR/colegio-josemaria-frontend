@@ -1,0 +1,152 @@
+<div class="container mt-5">
+    <h2>Lista Matriculas</h2>
+    <hr>
+    <div class="d-flex justify-content-between">
+        <div class="d-flex">
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCrear"
+                (click)="clearMatricula()">Crear Matricula</button>
+        </div>
+        <div class="d-flex">
+            <input type="text" class="form-control me-2">
+            <button class="btn btn-primary">Buscar</button>
+        </div>
+    </div>
+    <br>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Estudiante</th>
+                <th>Periodo</th>
+                <th>Nivel</th>
+                <th>Grado</th>
+                <th>Seccion</th>
+                <th>Registro</th>
+                <th>Accion</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (matricula of ListaMatriculas; track $index) {
+            <tr>
+                <td>{{matricula.id}}</td>
+                <td>{{matricula.id_estudiante}}</td>
+                <td>{{matricula.periodo}}</td>
+                <td>{{matricula.nivel}}</td>
+                <td>{{matricula.grado}}</td>
+                <td>{{matricula.seccion}}</td>
+                <td>{{matricula.registro | date:"dd-MM-yyyy"}}</td>
+                <td>
+                    <a href="" class="btn btn-secondary">Editar</a>
+                    <a href="" routerLink="/matricula-detalle/{{matricula.id}}"
+                        class="btn btn-secondary mx-2">Detalle</a>
+                    <a href="" class="btn btn-secondary">Eliminar</a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="modal fade" id="modalCrear">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Crear Matricula</h2>
+                <button class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <h4>Datos Estudiante</h4>
+                <hr>
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" placeholder="nro. documento"
+                            [(ngModel)]="txtDocumentoEstudiante">
+                    </div>
+                    <div class="d-grid col-6">
+                        <button class="btn btn-primary" (click)="buscarEstudiante()">Buscar Estudiante</button>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" placeholder="Nombre" disabled
+                            [(ngModel)]="estudiante.nombre">
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" placeholder="Documento" disabled
+                            [(ngModel)]="estudiante.numero">
+                    </div>
+                </div>
+                <br>
+                <h4>Datos Apoderado</h4>
+                <hr>
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" placeholder="Nombre" disabled
+                            [(ngModel)]="apoderado.nombre">
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" placeholder="Documento" disabled
+                            [(ngModel)]="apoderado.numero">
+                    </div>
+                </div>
+                <br>
+                <h4>Datos Matricula</h4>
+                <hr>
+                <form [formGroup]="formMatricula">
+                    <div class="row mb-2">
+                        <div class="col-sm-3">
+                            <label for="" class="form-label">Periodo</label>
+                            <select name="" id="" class="form-select" formControlName="periodo">
+                                @for (periodo of ListaPeriodo; track $index) {
+                                <option value="{{periodo.nombre}}">{{periodo.nombre}}</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="col-sm-5">
+                            <label for="" class="form-label">Nivel</label>
+                            <select name="" id="" class="form-select" formControlName="nivel">
+                                @for (nivel of ListaNiveles; track $index) {
+                                <option value="{{nivel.nombre}}">{{nivel.nombre}}</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="col-sm-4">
+                            <label for="" class="form-label">Grado</label>
+                            <select name="" id="" class="form-select" formControlName="grado">
+                                @for (grado of ListaGrados; track $index) {
+                                <option value="{{grado.nombre}}">{{grado.nombre}}</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-sm-3">
+                            <label for="" class="form-label">Seccion</label>
+                            <select name="" id="" class="form-select" formControlName="seccion">
+                                @for (seccion of ListaSeccion; track $index) {
+                                <option value="{{seccion.nombre}}">{{seccion.nombre}}</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="col-sm-5">
+                            <label for="" class="form-label">Situacion</label>
+                            <select name="" id="" class="form-select" formControlName="situacion">
+                                @for (situacion of ListaSituacion; track $index) {
+                                <option value="{{situacion.nombre}}">{{situacion.nombre}}</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="col-sm-4">
+                            <label for="" class="form-label">Descripcion</label>
+                            <input type="text" class="form-control" formControlName="descripcion">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button id="modalCrearClose" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                <button class="btn btn-success" (click)="crearMatricula()">Crear</button>
+            </div>
+        </div>
+    </div>
+</div>
