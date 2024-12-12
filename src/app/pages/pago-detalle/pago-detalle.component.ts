@@ -5,6 +5,7 @@ import { PagoService } from '../../service/pago.service';
 import { PagoDetalleService } from '../../service/pago-detalle.service';
 import { DatePipe } from '@angular/common';
 import { PagoDetalle } from '../../classes/pago-detalle';
+import { ReporteService } from '../../service/reporte.service';
 
 @Component({
   selector: 'app-pago-detalle',
@@ -22,7 +23,8 @@ export class PagoDetalleComponent {
   constructor(
     private activatedRoute: ActivatedRoute,
     private pagoService: PagoService,
-    private pagoDetalleService: PagoDetalleService
+    private pagoDetalleService: PagoDetalleService,
+    private reporteService: ReporteService
   ) { }
 
   ngOnInit() {
@@ -42,6 +44,10 @@ export class PagoDetalleComponent {
       next: (result) => { this.ListaPagoDetalle = result.data; },
       error: (error) => { console.log(error); }
     });
+  }
+
+  generaraPDF() {
+    this.reporteService.generarPDF(this.pago, this.ListaPagoDetalle);
   }
 
 }

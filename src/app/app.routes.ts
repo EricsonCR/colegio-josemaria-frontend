@@ -13,6 +13,7 @@ import { authGuard } from './helpers/auth.guard';
 import { UsuarioComponent } from './pages/usuario/usuario.component';
 import { PagoDetalleComponent } from './pages/pago-detalle/pago-detalle.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { ReportesComponent } from './pages/reportes/reportes.component';
 
 export const routes: Routes = [
     { path: "", redirectTo: "/login", pathMatch: "full" },
@@ -29,7 +30,8 @@ export const routes: Routes = [
             { path: "matricula-detalle/:id", component: MatriculaDetalleComponent },
             { path: "pago", component: PagoComponent },
             { path: "pago-registrar", component: PagoRegistrarComponent },
-            { path: "pago-detalle/:id", component: PagoDetalleComponent }
+            { path: "pago-detalle/:id", component: PagoDetalleComponent },
+            { path: "reporte", component: ReportesComponent }
         ],
         canActivate: [authGuard]
     },

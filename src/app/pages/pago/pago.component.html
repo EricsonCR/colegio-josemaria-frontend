@@ -37,7 +37,7 @@
                     <a href="" routerLink="/dashboard/pago-detalle/{{item.id}}"
                     class=" btn btn-secondary ms-2">Detalle</a>
                     <a href="" class="btn btn-secondary ms-2">Eliminar</a>
-                    <a href="" class="btn btn-primary ms-2">PDF</a>
+                    <button class="btn btn-success ms-2" (click)="generarPDF(item)">PDF</button>
                 </td>
             </tr>
             }
