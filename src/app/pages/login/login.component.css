@@ -1,0 +1,84 @@
+.principal-login {
+    width: 100vw;
+    height: 100vh;
+    background-image: url("/img/colegio-fondo-3.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.contenedor {
+    padding-top: 100px;
+    width: 1000px;
+    height: 700px;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+}
+
+.logo {
+    width: 500px;
+    height: 700px;
+    border-top-left-radius: 40px;
+    border-bottom-left-radius: 40px;
+    background-image: url("/img/colegio-logo-2.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.form {
+    width: 500px;
+    height: 700px;
+    background-color: white;
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
+    border: 1px solid #EEE;
+    text-align: center;
+}
+
+.group {
+    margin-top: 20px;
+}
+
+.group img {
+    width: 200px;
+    padding: 20px;
+    border: 1px solid #AAA;
+    border-radius: 100px;
+}
+
+.group input {
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #AAA;
+    font-size: 1rem;
+}
+
+.group a {
+    font-size: 1.1rem;
+    padding: 0 10px;
+}
+
+.group button {
+    margin-top: 60px;
+    padding: 10px 40px;
+    border-radius: 10px;
+    background-color: #1877F2;
+    color: white;
+    font-weight: bolder;
+    font-size: 1.2rem;
+    border: 1px solid black;
+}
+
+.group input:hover {
+    box-shadow: 2px 2px 20px skyblue;
+}
+
+.group button:hover {
+    box-shadow: 5px 5px 20px darkblue;
+}
+
+.group button:active {
+    background-color: #0A66C2;
+}

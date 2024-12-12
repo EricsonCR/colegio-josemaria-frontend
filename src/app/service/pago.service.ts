@@ -20,4 +20,8 @@ export class PagoService {
   crear(pago: any) {
     return this.httpClient.post<PagoResponse>(this.URL_API + "/crear", pago);
   }
+
+  buscar(id: number) {
+    return this.httpClient.get<PagoResponse>(this.URL_API + "/buscarPorId/" + id);
+  }
 }

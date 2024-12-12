@@ -1,0 +1,59 @@
+<div class="contenedor-principal">
+    <div class="contenedor">
+        <div class="card">
+            <div class="card-header bg-primary text-white text-center">
+                <h2>Registrar Usuario</h2>
+            </div>
+            <div class="card-body">
+                <form [formGroup]="formUsuario">
+                    <div class="row mb-3">
+                        <div class="col-sm-6">
+                            <label for="" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" formControlName="nombre">
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="" class="form-label">Apellido</label>
+                            <input type="text" class="form-control" formControlName="apellido">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-6">
+                            <label for="" class="form-label">Telfono</label>
+                            <input type="number" class="form-control" formControlName="telefono">
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="" class="form-label">Nacimiento</label>
+                            <input type="date" class="form-control" formControlName="nacimiento">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-12">
+                            <label for="" class="form-label">Direccion</label>
+                            <input type="e" class="form-control" formControlName="direccion">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-12">
+                            <label for="" class="form-label">Correo</label>
+                            <input type="email" class="form-control" formControlName="email">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-6">
+                            <label for="" class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" formControlName="password">
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="" class="form-label">Repetir contraseña</label>
+                            <input type="password" class="form-control">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-secondary" routerLink="/login">Regresar</button>
+                <a class="btn btn-primary ms-2" (click)="registarUsuario()">Registrar</a>
+            </div>
+        </div>
+    </div>
+</div>

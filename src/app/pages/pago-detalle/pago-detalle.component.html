@@ -1,0 +1,78 @@
+<div class="container mt-5">
+    <h2>Detalle de Pago</h2>
+    <hr>
+    <br>
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Pago</h4>
+                </div>
+                <div class="card-body">
+                    <dl class="row">
+                        <dt class="col-sm-4">ID</dt>
+                        <dd class="col-sm-8">{{pago.id}}</dd>
+                        <dt class="col-sm-4">Matricula</dt>
+                        <dd class="col-sm-8">{{pago.id_matricula}}</dd>
+                        <dt class="col-sm-4">Monto Total</dt>
+                        <dd class="col-sm-8">{{pago.monto}}</dd>
+                        <dt class="col-sm-4">Metodo</dt>
+                        <dd class="col-sm-8">{{pago.metodo_pago}}</dd>
+                        <dt class="col-sm-4">Numero OP</dt>
+                        <dd class="col-sm-8">{{pago.numero_op}}</dd>
+                        <dt class="col-sm-4">Voucher</dt>
+                        <dd class="col-sm-8">{{pago.url_voucher}}</dd>
+                        <dt class="col-sm-4">Estado</dt>
+                        <dd class="col-sm-8">{{pago.estado}}</dd>
+                        <dt class="col-sm-4">Registro</dt>
+                        <dd class="col-sm-8">{{pago.registro | date:"dd-MM-yyyy"}}</dd>
+                        <dt class="col-sm-4">Actualizacion</dt>
+                        <dd class="col-sm-8">{{pago.actualizacion | date:"dd-MM-yyyy"}}</dd>
+                    </dl>
+                </div>
+                <div class="card-footer"></div>
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Pago Detalle</h4>
+                </div>
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <thead class="table-primary">
+                            <tr>
+                                <th>ID</th>
+                                <th>Pago</th>
+                                <th>Matricula Detalle</th>
+                                <th>Concepto</th>
+                                <th>Monto</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (item of ListaPagoDetalle; track $index) {
+                            <tr>
+                                <td>{{item.id}}</td>
+                                <td>{{item.id_pago}}</td>
+                                <td>{{item.id_matricula_detalle}}</td>
+                                <td>{{item.concepto}}</td>
+                                <td>{{item.monto}}</td>
+                                <td>
+                                    @if (item.estado=="PAGADO") {
+                                    <span class="text-bg-success p-1 rounded-3">{{item.estado}}</span>
+                                    }
+                                </td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="">
+        <button class="btn btn-primary" routerLink="/dashboard/pago">Regresar</button>
+    </div>
+</div>

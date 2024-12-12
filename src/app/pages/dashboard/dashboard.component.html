@@ -1,0 +1,37 @@
+<div class="main">
+    <div class="main-menu">
+        <div class="logo">
+            <div class="marca">
+                <img src="img/logo-colegio.png" height="128px" alt="">
+            </div>
+        </div>
+        <div class="menu">
+            <li><a href=""><i class="bi bi-house-door"></i> Home</a></li>
+            <li><a href="" routerLink="/dashboard/usuario"><i class="bi bi-person"></i> Usuario</a></li>
+            <li><a href="" routerLink="/dashboard/estudiante"><i class="bi bi-person-vcard"></i> Estudiante</a></li>
+            <li><a href="" routerLink="/dashboard/apoderado"><i class="bi bi-person-standing"></i> Apoderado</a></li>
+            <li><a href="" routerLink="/dashboard/matricula"><i class="bi bi-ticket-detailed"></i> Matricula</a></li>
+            <li><a href="" routerLink="/dashboard/pago"><i class="bi bi-paypal"></i> Pago</a></li>
+            <li><a href=""><i class="bi bi-bar-chart-line"></i> Reporte</a></li>
+            <li><a href="" routerLink="concepto"><i class="bi bi-input-cursor"></i> Concepto</a></li>
+        </div>
+    </div>
+    <div class="main-body">
+        <div class="header">
+            <a href=""><i class="bi bi-list"></i></a>
+            <p>Mensaje</p>
+            <div class="user">
+                <img src="img/logo-user.png" height="48px" alt="">
+                <ul class="sesion">
+                    <li>EricsonDaniel</li>
+                    <li>{{"ericsondaniel@gmail.com"}}</li>
+                    <li><a href="">Notificaciones</a></li>
+                    <li><button (click)="logout()">Cerrar sesion</button></li>
+                </ul>
+            </div>
+        </div>
+        <div class="dashboard">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

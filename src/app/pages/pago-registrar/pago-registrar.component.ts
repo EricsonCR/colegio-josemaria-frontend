@@ -14,6 +14,8 @@ import { Pago } from '../../classes/pago';
 import { ConceptoDetalle } from '../../classes/concepto-detalle';
 import { ConceptoDetalleService } from '../../service/concepto-detalle.service';
 import { PagoService } from '../../service/pago.service';
+import { ConceptoService } from '../../service/concepto.service';
+import { Concepto } from '../../classes/concepto';
 
 @Component({
   selector: 'app-pago-registrar',
@@ -36,8 +38,10 @@ export class PagoRegistrarComponent {
   estadoButtonPagar: boolean = true;
   pago: Pago = new Pago();
   ListaMetodosPago: ConceptoDetalle[] = [];
+  ListaConcepto: Concepto[] = [];
 
   constructor(
+    private conceptoService: ConceptoService,
     private conceptoDetalleService: ConceptoDetalleService,
     private estudianteService: EstudianteService,
     private apoderadoService: ApoderadoService,
@@ -48,9 +52,21 @@ export class PagoRegistrarComponent {
 
   ngOnInit() {
     this.limpiarDatos();
+    this.buscarConceptosDetalle();
+    this.buscarConceptos();
+  }
+
+  buscarConceptos() {
+    this.conceptoService.listar().subscribe({
+      next: (result) => { this.ListaConcepto = result.data; }
+    });
+  }
+
+  buscarConceptosDetalle() {
     this.conceptoDetalleService.listar().subscribe({
       next: (result) => {
-        this.ListaMetodosPago = result.data.filter(x => x.id_concepto == 10);
+        const id_concepto = this.ListaConcepto.find(x => x.nombre == "PAGO")?.id;
+        this.ListaMetodosPago = result.data.filter(x => x.id_concepto == id_concepto);
         this.pago.metodo_pago = this.ListaMetodosPago[0].nombre;
       },
       error: (error) => { console.log(error); }
@@ -106,7 +122,7 @@ export class PagoRegistrarComponent {
         id_pago: 0,
         id_matricula_detalle: data.id,
         monto: data.monto,
-        estado: ""
+        estado: "PAGADO"
       });
     } else {
       const index = this.ListaPagoDetalle.findIndex(x => x.id_matricula_detalle == data.id);
@@ -150,5 +166,6 @@ export class PagoRegistrarComponent {
     this.txtDniMatricula = "";
     this.estadoButtonPagar = true;
     this.listaCheckbox = [];
+    this.buscarConceptosDetalle();
   }
 }
