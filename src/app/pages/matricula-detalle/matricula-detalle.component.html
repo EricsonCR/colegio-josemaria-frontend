@@ -1,7 +1,6 @@
 <div class="container mt-5">
     <h2>Datos de Matricula</h2>
     <hr>
-    <br>
     <div class="row">
         <div class="col-sm-4">
             <div class="card">
@@ -111,37 +110,42 @@
             </div>
         </div>
     </div>
-    <br>
-    <h2>Lista Matricula Detalle</h2>
     <hr>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>ID Matricula</th>
-                <th>Descripcion</th>
-                <th>Monto</th>
-                <th>Estado</th>
-            </tr>
-        </thead>
-        <tbody>
-            @for (matriculaDetalle of listaMatriculaDetalle; track $index) {
-            <tr>
-                <td>{{matriculaDetalle.id}}</td>
-                <td>{{matriculaDetalle.id_matricula}}</td>
-                <td>{{matriculaDetalle.descripcion}}</td>
-                <td>{{matriculaDetalle.monto}}</td>
-                <td>
-                    @if (matriculaDetalle.estado=="PENDIENTE") {
-                    <span class="text-bg-danger p-1 rounded-3">{{matriculaDetalle.estado}}</span>
-                    }@else{
-                    <span class="text-bg-success p-2 rounded-3">{{matriculaDetalle.estado}}</span>
+    <div class="card">
+        <div class="card-header">
+            <h2>Lista Matricula Detalle</h2>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>ID Matricula</th>
+                        <th>Descripcion</th>
+                        <th>Monto</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (matriculaDetalle of listaMatriculaDetalle; track $index) {
+                    <tr>
+                        <td>{{matriculaDetalle.id}}</td>
+                        <td>{{matriculaDetalle.id_matricula}}</td>
+                        <td>{{matriculaDetalle.descripcion}}</td>
+                        <td>{{matriculaDetalle.monto}}</td>
+                        <td>
+                            @if (matriculaDetalle.estado=="PENDIENTE") {
+                            <span class="text-bg-danger p-1 rounded-3">{{matriculaDetalle.estado}}</span>
+                            }@else{
+                            <span class="text-bg-success p-2 rounded-3">{{matriculaDetalle.estado}}</span>
+                            }
+                        </td>
+                    </tr>
                     }
-                </td>
-            </tr>
-            }
-        </tbody>
-    </table>
+                </tbody>
+            </table>
+        </div>
+    </div>
     <hr>
     <div class="">
         <button class="btn btn-primary" routerLink="/dashboard/matricula">Regresar</button>
