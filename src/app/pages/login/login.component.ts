@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule,CommonModule, RouterLink],
+  imports: [ReactiveFormsModule, CommonModule, RouterLink],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
@@ -26,12 +26,13 @@ export class LoginComponent {
     password: new FormControl()
   });
 
-  login(): void {
+  login() {
     this.authService.login(this.formUsuario.value).subscribe({
       next: (result) => {
-        console.log(result);
+        this.authService.setToken(result.token);
         this.router.navigate(["/dashboard"]);
-      }
+      },
+      error: (error) => { console.log(error); }
     });
   }
 }

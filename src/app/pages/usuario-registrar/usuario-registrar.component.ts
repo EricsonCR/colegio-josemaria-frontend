@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { UsuarioService } from '../../service/usuario.service';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { AuthService } from '../../service/auth.service';
 
 @Component({
   selector: 'app-usuario-registrar',
@@ -13,7 +14,8 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 })
 export class UsuarioRegistrarComponent {
   constructor(
-    private usuarioService: UsuarioService
+    private authService: AuthService,
+    private router: Router
   ) { }
 
   formUsuario = new FormGroup({
@@ -28,8 +30,12 @@ export class UsuarioRegistrarComponent {
 
   registarUsuario() {
     console.log(this.formUsuario.value);
-    this.usuarioService.registrar(this.formUsuario.value).subscribe({
-      next: (result) => { console.log(result); },
+    this.authService.register(this.formUsuario.value).subscribe({
+      next: (result) => {
+        console.log(result);
+        this.authService.setToken(result.token);
+        this.router.navigate(["/dashboard"]);
+      },
       error: (error) => { console.log(error); }
     });
   }

@@ -11,14 +11,16 @@ export class AuthService {
     private httpClient: HttpClient
   ) { }
 
-  login(usuario: any): Observable<any> {
-    return this.httpClient.post(this.API_URL + "/login", usuario, {
-      observe: 'response'
-    }).pipe(map((response: HttpResponse<any>) => {
-      const token = response.headers.get("Authorization")!.replace("Bearer ", "");
-      localStorage.setItem("token", token);
-      return response.body;
-    }));
+  login(usuario: any) {
+    return this.httpClient.post<any>(this.API_URL + "/login", usuario);
+  }
+
+  register(usuario: any) {
+    return this.httpClient.post<any>(this.API_URL + "/register", usuario);
+  }
+
+  setToken(token: string) {
+    localStorage.setItem("token", token);
   }
 
   getToken() {
@@ -28,7 +30,7 @@ export class AuthService {
     return "";
   }
 
-  removeItem(data: string) {
-    localStorage.removeItem(data);
+  clearToken(token: string) {
+    localStorage.removeItem(token);
   }
 }

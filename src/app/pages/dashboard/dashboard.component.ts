@@ -18,7 +18,7 @@ export class DashboardComponent {
   ) { }
   
   logout() {
-    this.authService.removeItem("token");
+    this.authService.clearToken("token");
     this.router.navigate(["/login"]);
   }
 
