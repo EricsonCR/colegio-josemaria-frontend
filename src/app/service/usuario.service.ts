@@ -10,11 +10,15 @@ export class UsuarioService {
     private httpClient: HttpClient
   ) { }
 
-  listar(){
-    return this.httpClient.get<any>(this.API_URL+"/listar");
+  listar() {
+    return this.httpClient.get<any>(this.API_URL + "/listar");
   }
 
   registrar(usuario: any) {
     return this.httpClient.post<any>(this.API_URL + "/registrar", usuario);
+  }
+
+  buscarPorEmail(email: string) {
+    return this.httpClient.get<any>(this.API_URL + "/buscarPorEmail/" + email);
   }
 }

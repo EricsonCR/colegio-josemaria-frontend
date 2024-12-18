@@ -3,6 +3,7 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { Usuario } from '../../classes/usuario';
 import { AuthService } from '../../service/auth.service';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-login-signup',
@@ -32,10 +33,30 @@ export class LoginSignupComponent {
     this.authService.generated(this.formUsuario.value).subscribe({
       next: (result) => {
         if (result.status == "200") {
+          this.alertaSuccess(result.message);
           this.router.navigate(["/login/validation"]);
+        } else {
+          this.alertaError(result.message);
         }
       },
       error: (error) => { console.log(error); }
+    });
+  }
+  alertaSuccess(message: string) {
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: message,
+      showConfirmButton: false,
+      timer: 1500
+    });
+  }
+
+  alertaError(message: string) {
+    Swal.fire({
+      title: message,
+      icon: "error",
+      draggable: true
     });
   }
 

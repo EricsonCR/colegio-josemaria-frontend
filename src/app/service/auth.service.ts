@@ -34,7 +34,14 @@ export class AuthService {
     return "";
   }
 
-  clearToken(token: string) {
-    localStorage.removeItem(token);
+  setUser(user: string) {
+    localStorage.setItem("user", user);
+  }
+
+  getUser() {
+    if (typeof window !== 'undefined' && window.localStorage) {
+      return localStorage.getItem("user");
+    }
+    return "";
   }
 }

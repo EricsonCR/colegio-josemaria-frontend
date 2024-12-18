@@ -19,13 +19,13 @@
     <div class="main-body">
         <div class="header">
             <a href=""><i class="bi bi-list"></i></a>
-            <p>Mensaje</p>
+            <p class="fw-bold text-white fs-4">{{mensaje}}</p>
             <div class="user">
                 <img src="img/logo-user.png" height="48px" alt="">
                 <ul class="sesion">
-                    <li>EricsonDaniel</li>
-                    <li>{{"ericsondaniel@gmail.com"}}</li>
-                    <li><a href="">Notificaciones</a></li>
+                    <li>{{nombre}}</li>
+                    <li>{{email}}</li>
+                    <li (click)="editprofile()">editar perfil</li>
                     <li><button (click)="logout()">Cerrar sesion</button></li>
                 </ul>
             </div>

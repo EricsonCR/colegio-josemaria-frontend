@@ -19,6 +19,6 @@
         <a href="" routerLink="/login/signup">Registrarse !</a>
     </div>
     <div class="group">
-        <button (click)="signin()">Login</button>
+        <button [disabled]="!formUsuario.valid" (click)="signin()">Login</button>
     </div>
 </div>
