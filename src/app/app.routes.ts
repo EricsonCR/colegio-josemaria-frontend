@@ -13,14 +13,20 @@ import { UsuarioComponent } from './pages/usuario/usuario.component';
 import { PagoDetalleComponent } from './pages/pago-detalle/pago-detalle.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { ReportesComponent } from './pages/reportes/reportes.component';
-import { UsuarioRegistrarComponent } from './pages/usuario-registrar/usuario-registrar.component';
-import { UsuarioValidatedComponent } from './pages/usuario-validated/usuario-validated.component';
+import { LoginSinginComponent } from './pages/login-singin/login-singin.component';
+import { LoginSignupComponent } from './pages/login-signup/login-signup.component';
+import { LoginValidationComponent } from './pages/login-validation/login-validation.component';
 
 export const routes: Routes = [
-    { path: "", redirectTo: "/login", pathMatch: "full" },
-    { path: "login", component: LoginComponent },
-    { path: "login/registrar", component: UsuarioRegistrarComponent },
-    { path: "login/validar", component: UsuarioValidatedComponent },
+    { path: "", redirectTo: "/login/signin", pathMatch: "full" },
+    {
+        path: "login", component: LoginComponent,
+        children: [
+            { path: "signin", component: LoginSinginComponent },
+            { path: "signup", component: LoginSignupComponent },
+            { path: "validation", component: LoginValidationComponent }
+        ]
+    },
     {
         path: 'dashboard', component: DashboardComponent,
         children: [

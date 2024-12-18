@@ -16,10 +16,10 @@ export class DashboardComponent {
     private authService: AuthService,
     private router: Router
   ) { }
-  
+
   logout() {
     this.authService.clearToken("token");
-    this.router.navigate(["/login"]);
+    this.router.navigate(["/login/signin"]);
   }
 
 }

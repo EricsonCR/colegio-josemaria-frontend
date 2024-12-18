@@ -1,0 +1,70 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.form {
+    width: 500px;
+    height: 700px;
+    background-color: white;
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
+    border: 1px solid #EEE;
+    text-align: center;
+}
+
+.group {
+    margin-top: 20px;
+    position: relative;
+}
+
+.group img {
+    width: 200px;
+    padding: 20px;
+    border: 1px solid #AAA;
+    border-radius: 100px;
+}
+
+.group input {
+    width: 300px;
+    padding: 10px 20px 10px 50px;
+    border-radius: 10px;
+    border: 1px solid #AAA;
+    font-size: 1rem;
+}
+
+.group a {
+    font-size: 1.1rem;
+    padding: 0 10px;
+}
+
+.group button {
+    margin-top: 60px;
+    padding: 10px 40px;
+    border-radius: 10px;
+    background-color: #1877F2;
+    color: white;
+    font-weight: bolder;
+    font-size: 1.2rem;
+    border: 1px solid black;
+}
+
+.group input:hover {
+    box-shadow: 2px 2px 20px skyblue;
+}
+
+.group button:hover {
+    box-shadow: 5px 5px 20px darkblue;
+}
+
+.group button:active {
+    background-color: #0A66C2;
+}
+
+.icon {
+    position: absolute;
+    font-size: 30px;
+    bottom: 0.05rem;
+    left: 110px;
+}

@@ -1,0 +1,40 @@
+<div class="form">
+    <div class="group">
+        <h1>Registrar Usuario</h1>
+    </div>
+    <br>
+    <form [formGroup]="formUsuario">
+        <div class="group">
+            <i class="bi bi-ticket-perforated-fill icon"></i>
+            <select class="input" class="">Documento</select>
+        </div>
+        <div class="group">
+            <i class="bi bi-123 icon"></i>
+            <input class="input" type="number" placeholder="Numero" formControlName="numero">
+        </div>
+        <div class="group">
+            <i class="bi bi-file-person-fill icon"></i>
+            <input class="input" type="text" placeholder="Nombre" formControlName="nombre">
+        </div>
+        <div class="group">
+            <i class="bi bi-file-person-fill icon"></i>
+            <input class="input" type="text" placeholder="Apellido" formControlName="apellido">
+        </div>
+        <div class="group">
+            <i class="bi bi-envelope-at-fill icon"></i>
+            <input class="input" type="email" placeholder="Email" formControlName="email">
+        </div>
+        <div class="group">
+            <i class="bi bi-file-lock2-fill icon"></i>
+            <input class="input" type="password" placeholder="Password" formControlName="password">
+        </div>
+    </form>
+    <br>
+    <br>
+    <div class="group">
+        <button (click)="signup()">Registrar</button>
+    </div>
+    <div class="group">
+        <a href="" routerLink="/login/signin">Regresar</a>
+    </div>
+</div>
