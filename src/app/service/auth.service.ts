@@ -15,8 +15,12 @@ export class AuthService {
     return this.httpClient.post<any>(this.API_URL + "/login", usuario);
   }
 
-  register(usuario: any) {
-    return this.httpClient.post<any>(this.API_URL + "/register", usuario);
+  generated(usuario: any) {
+    return this.httpClient.post<any>(this.API_URL + "/generated", usuario);
+  }
+
+  register(code: string) {
+    return this.httpClient.post<any>(this.API_URL + "/register", code);
   }
 
   setToken(token: string) {

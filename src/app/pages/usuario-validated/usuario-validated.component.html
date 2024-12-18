@@ -1,0 +1,17 @@
+<div class="contenedor-principal">
+    <div class="contenedor">
+        <div class="card">
+            <div class="card-header bg-primary text-white text-center">
+                <h2>Validar Usuario</h2>
+            </div>
+            <div class="card-body">
+                <label for="" class="form-label fw-bold">Ingresar codigo de validacion</label>
+                <input type="number" class="form-control" [(ngModel)]="codigo">
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-secondary" routerLink="/login/registrar">Regresar</button>
+                <a class="btn btn-primary ms-2" (click)="validarCodigo()">Validar</a>
+            </div>
+        </div>
+    </div>
+</div>

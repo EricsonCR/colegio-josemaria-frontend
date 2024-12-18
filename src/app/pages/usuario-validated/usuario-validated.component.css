@@ -1,0 +1,21 @@
+.contenedor-principal{
+    width: 100vw;
+    height: 100vh;
+    background-image: url("/img/colegio-fondo-3.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.contenedor {
+    padding-top: 100px;
+    width: 500px;
+    height: 700px;
+    margin: auto;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}

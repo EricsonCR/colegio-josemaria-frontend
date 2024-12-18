@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { UsuarioService } from '../../service/usuario.service';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../../service/auth.service';
 
@@ -13,10 +12,13 @@ import { AuthService } from '../../service/auth.service';
   styleUrl: './usuario-registrar.component.css'
 })
 export class UsuarioRegistrarComponent {
+
   constructor(
     private authService: AuthService,
     private router: Router
   ) { }
+
+  codigo: string = "";
 
   formUsuario = new FormGroup({
     nombre: new FormControl(),
@@ -25,16 +27,16 @@ export class UsuarioRegistrarComponent {
     password: new FormControl(),
     telefono: new FormControl(),
     nacimiento: new FormControl(),
-    direccion: new FormControl()
+    direccion: new FormControl(),
+    code: new FormControl()
   });
 
   registarUsuario() {
-    console.log(this.formUsuario.value);
-    this.authService.register(this.formUsuario.value).subscribe({
+    this.authService.generated(this.formUsuario.value).subscribe({
       next: (result) => {
-        console.log(result);
-        this.authService.setToken(result.token);
-        this.router.navigate(["/dashboard"]);
+        if (result.status == "200") {
+          this.router.navigate(["/login/validar"]);
+        }
       },
       error: (error) => { console.log(error); }
     });

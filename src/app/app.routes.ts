@@ -7,18 +7,20 @@ import { MatriculaDetalleComponent } from './pages/matricula-detalle/matricula-d
 import { PagoComponent } from './pages/pago/pago.component';
 import { PagoRegistrarComponent } from './pages/pago-registrar/pago-registrar.component';
 import { LoginComponent } from './pages/login/login.component';
-import { UsuarioRegistrarComponent } from './pages/usuario-registrar/usuario-registrar.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { authGuard } from './helpers/auth.guard';
 import { UsuarioComponent } from './pages/usuario/usuario.component';
 import { PagoDetalleComponent } from './pages/pago-detalle/pago-detalle.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { ReportesComponent } from './pages/reportes/reportes.component';
+import { UsuarioRegistrarComponent } from './pages/usuario-registrar/usuario-registrar.component';
+import { UsuarioValidatedComponent } from './pages/usuario-validated/usuario-validated.component';
 
 export const routes: Routes = [
     { path: "", redirectTo: "/login", pathMatch: "full" },
     { path: "login", component: LoginComponent },
     { path: "login/registrar", component: UsuarioRegistrarComponent },
+    { path: "login/validar", component: UsuarioValidatedComponent },
     {
         path: 'dashboard', component: DashboardComponent,
         children: [
