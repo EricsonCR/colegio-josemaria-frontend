@@ -32,6 +32,7 @@ export class LoginSignupComponent {
   signup() {
     this.authService.generated(this.formUsuario.value).subscribe({
       next: (result) => {
+        console.log(result);
         if (result.status == "200") {
           this.alertaSuccess(result.message);
           this.router.navigate(["/login/validation"]);
