@@ -44,4 +44,15 @@ export class AuthService {
     }
     return "";
   }
+
+  removeToken() {
+    if (localStorage.getItem("token")) {
+      localStorage.removeItem("token");
+    }
+  }
+  removeUser() {
+    if (localStorage.getItem("user")) {
+      localStorage.removeItem("user");
+    }
+  }
 }

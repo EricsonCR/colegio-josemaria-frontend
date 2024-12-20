@@ -26,11 +26,12 @@ export class LoginSinginComponent {
   });
 
   signin() {
+    this.authService.removeToken();
+    this.authService.removeUser();
     this.authService.login(this.formUsuario.value).subscribe({
       next: (result) => {
         if (result.status == "200") {
           console.log(result.data);
-          this.authService.setToken("");
           this.authService.setToken(result.data.token);
           this.authService.setUser(result.data.email);
           this.alertaSuccess(result.message);
