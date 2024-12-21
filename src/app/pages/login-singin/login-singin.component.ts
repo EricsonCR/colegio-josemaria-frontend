@@ -31,7 +31,6 @@ export class LoginSinginComponent {
     this.authService.login(this.formUsuario.value).subscribe({
       next: (result) => {
         if (result.status == "200") {
-          console.log(result.data);
           this.authService.setToken(result.data.token);
           this.authService.setUser(result.data.email);
           this.alertaSuccess(result.message);

@@ -1,6 +1,6 @@
 import { DatePipe } from '@angular/common';
-import { booleanAttribute, Component } from '@angular/core';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AfterViewInit, Component } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EstudianteService } from '../../service/estudiante.service';
 import { ApoderadoService } from '../../service/apoderado.service';
 import { MatriculaService } from '../../service/matricula.service';
@@ -16,6 +16,7 @@ import { ConceptoDetalleService } from '../../service/concepto-detalle.service';
 import { PagoService } from '../../service/pago.service';
 import { ConceptoService } from '../../service/concepto.service';
 import { Concepto } from '../../classes/concepto';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-pago-registrar',
@@ -24,7 +25,7 @@ import { Concepto } from '../../classes/concepto';
   templateUrl: './pago-registrar.component.html',
   styleUrl: './pago-registrar.component.css'
 })
-export class PagoRegistrarComponent {
+export class PagoRegistrarComponent implements AfterViewInit {
 
   FechaActual = new Date();
   txtDniMatricula: string = "";
@@ -49,11 +50,14 @@ export class PagoRegistrarComponent {
     private matriculaDetalleService: MatriculaDetalleService,
     private pagoService: PagoService
   ) { }
+  ngAfterViewInit(): void {
+    this.limpiarDatos();
+    this.buscarConceptos();
+    this.buscarConceptosDetalle();
+  }
 
   ngOnInit() {
-    this.limpiarDatos();
-    this.buscarConceptosDetalle();
-    this.buscarConceptos();
+
   }
 
   buscarConceptos() {
@@ -65,9 +69,9 @@ export class PagoRegistrarComponent {
   buscarConceptosDetalle() {
     this.conceptoDetalleService.listar().subscribe({
       next: (result) => {
-        const id_concepto = this.ListaConcepto.find(x => x.nombre == "PAGO")?.id;
+        const id_concepto = this.ListaConcepto.find(x => x.nombre == "METODO_PAGO")?.id;
         this.ListaMetodosPago = result.data.filter(x => x.id_concepto == id_concepto);
-        this.pago.metodo_pago = this.ListaMetodosPago[0].nombre;
+        this.pago.metodo_pago = this.ListaMetodosPago[0].nombre ?? "";
       },
       error: (error) => { console.log(error); }
     });
@@ -144,14 +148,31 @@ export class PagoRegistrarComponent {
   }
 
   registrarPago() {
-    this.pago.pagoDetalle = this.ListaPagoDetalle;
-    this.pago.id_matricula = this.matricula.id;
-    this.pagoService.crear(this.pago).subscribe({
-      next: (result) => {
-        console.log(result.data);
-        this.ngOnInit();
-      },
-      error: (error) => { console.log(error); }
+    Swal.fire({
+      title: "Seguro desea realizar el apgo",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Si, quiero pagar"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.pago.pagoDetalle = this.ListaPagoDetalle;
+        this.pago.id_matricula = this.matricula.id;
+        this.pagoService.crear(this.pago).subscribe({
+          next: (result) => {
+            if (result.status == "200") {
+              this.alertaSuccess(result.message);
+              this.ngOnInit();
+              this.limpiarDatos();
+            } else {
+              this.alertaError(result.message);
+            }
+
+          },
+          error: (error) => { console.log(error); }
+        });
+      }
     });
   }
 
@@ -168,4 +189,44 @@ export class PagoRegistrarComponent {
     this.listaCheckbox = [];
     this.buscarConceptosDetalle();
   }
+
+  alertaSuccess(message: string) {
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: message,
+      showConfirmButton: false,
+      timer: 2500
+    });
+  }
+
+  alertaError(message: string) {
+    Swal.fire({
+      position: "center",
+      icon: "error",
+      title: message,
+      showConfirmButton: false,
+      timer: 2500
+    });
+  }
+
+  alertaConsulta() {
+    Swal.fire({
+      title: "Seguro desea realizar el apgo",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Si, quiero pagar"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "Deleted!",
+          text: "Your file has been deleted.",
+          icon: "success"
+        });
+      }
+    });
+  }
+
 }

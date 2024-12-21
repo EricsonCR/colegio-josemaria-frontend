@@ -6,7 +6,11 @@
     <form [formGroup]="formUsuario">
         <div class="group">
             <i class="bi bi-ticket-perforated-fill icon"></i>
-            <select class="input" class="">Documento</select>
+            <select name="" id="" class="input" formControlName="documento">
+                @for (documento of ListaDocumentos; track $index) {
+                <option value="{{documento.nombre}}">{{documento.nombre}}</option>
+                }
+            </select>
         </div>
         <div class="group">
             <i class="bi bi-123 icon"></i>
@@ -32,7 +36,7 @@
     <br>
     <br>
     <div class="group">
-        <button (click)="signup()">Registrar</button>
+        <button [disabled]="!formUsuario.valid" (click)="signup()">Registrar</button>
     </div>
     <div class="group">
         <a href="" routerLink="/login/signin">Regresar</a>

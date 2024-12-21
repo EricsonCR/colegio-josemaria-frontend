@@ -30,7 +30,8 @@ export class ReporteService {
     doc.text("Numero de Matricula:", 20, 40); doc.text(pago.id_matricula.toString(), 80, 40);
     doc.text("Metodo de Pago:", 20, 50); doc.text(pago.metodo_pago.toString(), 80, 50);
     doc.text("Numero de OP:", 20, 60); doc.text(pago.numero_op.toString(), 80, 60);
-    doc.text("Fecha de Pago:", 20, 70); doc.text(formatDate(pago.registro, 'dd-MM-yyyy', 'en-US').toString(), 80, 70);
+    doc.text("Monto total:", 20, 70); doc.text(pago.monto.toString(), 80, 70);
+    doc.text("Fecha de Pago:", 20, 80); doc.text(formatDate(pago.registro, 'dd-MM-yyyy', 'en-US').toString(), 80, 80);
 
 
     /* doc.text(`Número de Pago: ${pago.id}`, 20, 30);
@@ -41,7 +42,7 @@ export class ReporteService {
 
     // Detalles de Pago
     doc.setFontSize(18);
-    doc.text('Detalles:', 10, 80);
+    doc.text('Detalles:', 10, 90);
 
     // Crear tabla para detalles
     const tableColumn = ['ID', 'Concepto', 'Monto'];

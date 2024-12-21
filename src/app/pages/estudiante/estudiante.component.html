@@ -1,48 +1,53 @@
 <div class="container mt-5">
     <h2>Lista Estudiantes</h2>
     <hr>
-    <div class="d-flex justify-content-between">
-        <div class="d-flex">
-            <button class="btn btn-primary" data-bs-target="#modalCrear" data-bs-toggle="modal"
-                (click)="clearEstudiante()">Agregar
-                Estudiante</button>
+    <div class="card">
+        <div class="card-header">
+            <div class="d-flex justify-content-between">
+                <div class="d-flex">
+                    <button class="btn btn-primary" data-bs-target="#modalCrear" data-bs-toggle="modal"
+                        (click)="clearEstudiante()">Agregar
+                        Estudiante</button>
+                </div>
+                <div class="d-flex">
+                    <input type="text" class="form-control me-2">
+                    <button class="btn btn-primary">Buscar</button>
+                </div>
+            </div>
         </div>
-        <div class="d-flex">
-            <input type="text" class="form-control me-2">
-            <button class="btn btn-primary">Buscar</button>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Documento</th>
+                        <th>Nombre</th>
+                        <th>Telefono</th>
+                        <th>Email</th>
+                        <th>Nacimiento</th>
+                        <th>Accion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (estudiante of ListaEstudiantes; track $index) {
+                    <tr>
+                        <td>{{estudiante.id}}</td>
+                        <td>{{estudiante.documento}} : {{estudiante.numero}}</td>
+                        <td>{{estudiante.nombre}} {{estudiante.apellido}}</td>
+                        <td>{{estudiante.telefono}}</td>
+                        <td>{{estudiante.email}}</td>
+                        <td>{{estudiante.nacimiento | date:'dd-MM-yyyy'}}</td>
+                        <td>
+                            <a href="" class="btn btn-secondary">Editar</a>
+                            <a href="" class="btn btn-secondary mx-2">Detalle</a>
+                            <a href="" class="btn btn-secondary">Eliminar</a>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
         </div>
     </div>
-    <br>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Documento</th>
-                <th>Nombre</th>
-                <th>Telefono</th>
-                <th>Email</th>
-                <th>Nacimiento</th>
-                <th>Accion</th>
-            </tr>
-        </thead>
-        <tbody>
-            @for (estudiante of ListaEstudiantes; track $index) {
-            <tr>
-                <td>{{estudiante.id}}</td>
-                <td>{{estudiante.documento}} : {{estudiante.numero}}</td>
-                <td>{{estudiante.nombre}} {{estudiante.apellido}}</td>
-                <td>{{estudiante.telefono}}</td>
-                <td>{{estudiante.email}}</td>
-                <td>{{estudiante.nacimiento | date:'dd-MM-yyyy'}}</td>
-                <td>
-                    <a href="" class="btn btn-secondary">Editar</a>
-                    <a href="" class="btn btn-secondary mx-2">Detalle</a>
-                    <a href="" class="btn btn-secondary">Eliminar</a>
-                </td>
-            </tr>
-            }
-        </tbody>
-    </table>
 </div>
 
 <div class="modal fade" id="modalCrear">

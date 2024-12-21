@@ -2,6 +2,6 @@ import { Pago } from "../classes/pago";
 
 export interface PagoResponse {
     data: Pago[];
-    mesasge: string;
+    message: string;
     status: string;
 }
